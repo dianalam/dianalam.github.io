@@ -1,6 +1,6 @@
-# # # # # # # #
-#   K i k o   #
-# # # # # # # #
+# # # # # # # # # #
+#   D i A n A :)  #
+# # # # # # # # # #
 
 # Basic
 name:               "diana lam"
@@ -12,6 +12,9 @@ permalink:          /:year/:month/:day/:title.html
 
 # Markdown
 markdown:           rdiscount
+
+# Analytics
+google_analytics:   UA-72320233-1
 
 # Navigation
 nav:
