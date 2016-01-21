@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Munging the MTA - Optimizing a Non-Profit's Street Team Placements
+excerpt: Outside what subway stations should a women's tech non-profit deploy their street team members in order to drive attendance to their annual gala and spread awareness for their cause?
 ---
 
 As a lifelong New Yorker, I've come to find street team canvassers to be a common occurence during my daily commutes. I've always wondered how effective these teams are and how they decide to place themselves--anyone who has observed the interaction of strangers in New York City before will tell you that canvassers are not typically met with enthusiasm. Rather, people tend to go out of their way to avoid interaction. For my first project at my data science fellowship at Metis, I was asked to dive into exactly this question--**outside what subway stations should a women's tech non-profit deploy their street team members in order to drive attendance to their annual gala and spread awareness for their cause?**

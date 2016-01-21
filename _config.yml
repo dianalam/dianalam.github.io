@@ -3,10 +3,10 @@
 # # # # # # # #
 
 # Basic
-name:               "Kiko"
+name:               "diana lam"
 
 # URL
-baseurl:            "/Kiko"
+baseurl:            ""
 #baseurl:            "" #For Root Domain
 permalink:          /:year/:month/:day/:title.html
 
@@ -15,10 +15,14 @@ markdown:           rdiscount
 
 # Navigation
 nav:
-  - name:           "About"
-    href:           "//gfjaru.github.io/Kiko/about"
-  - name:           "Download"
-    href:           "//github.com/gfjaru/Kiko/releases"
+  - name:           "about"
+    href:           "/about"
+  - name:           "github"
+    href:           "https://github.com/dianalam"
+  - name:           "linkedin"
+    href:           "https://www.linkedin.com/in/diana-lam-45a48726"
+  - name:           "design"
+    href:           "https://dianalam.carbonmade.com"
 
 # Sass
 sass:

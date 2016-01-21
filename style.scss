@@ -310,6 +310,7 @@ tbody tr:nth-child(odd) th {
     a {
       color: #aaa;
       font-weight: 300;
+      margin-right: 5px;
       text-transform: lowercase;
       -webkit-transition: all .2s ease;
          -moz-transition: all .2s ease;
@@ -347,6 +348,10 @@ tbody tr:nth-child(odd) th {
 }
 
 .list {
+  &-item {
+    margin-bottom: 2rem;  
+  }
+  
   &-post-title {
     margin-bottom: .25rem;
     
@@ -360,7 +365,7 @@ tbody tr:nth-child(odd) th {
     }
   }
   &-post-date {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     font-size: .75rem;
     text-transform: uppercase;
   }

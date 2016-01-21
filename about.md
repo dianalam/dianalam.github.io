@@ -3,8 +3,14 @@ title: About
 permalink: /about/
 ---
 
-<p class="lead"><a href="http://github.com/gfjaru/Kiko">Kiko</a> is a theme for <a href="http://jekyllrb.com">Jekyll</a>, the static site generator.</p>
+Urban strategist working at the intersection of design, economics, and public policy. Passionate about leveraging data and technology to strengthen innovation in cities.
 
-Kiko is simple, lightweight theme. It's designed and developed by [@gfjaru](https://twitter.com/gfjaru).
+Currently: Data Scientist @ [Metis](http://thisismetis.com)<br> 
+Formerly: Senior Analyst @ [HR&A Advisors](http://hraadvisors.com)<br> 
+Education: B.A. Architecture, magna cum laude, Princeton University  
+
+### Contact me
+
+[lam.diana.hc@gmail.com](mailto:lam.diana.hc@gmail.com)
 
 
