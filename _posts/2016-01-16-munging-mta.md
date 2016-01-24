@@ -32,7 +32,7 @@ What we're really interested in here is the station name (`TIMES SQ-42 ST`), dat
 
 And the top stations are...
 
-![top 25 stations chart]({{ site.url }}/assets/top25stations.png)
+![top 25 stations chart]({{ site.url }}/assets/top25.png)
 
 The top four stations here made sense--they're all big transfer hubs. But we noticed a few odd top runners such as 86th St and 125th St, which are all more residential areas. Turns out there are a handful of MTA stations that share the same name, but are in totally different areas! We wound up dropping these values, since they were unlikely to be top runners on their own. There are also some stations sharing the same name that are technically separate (such as the Chambers St - 2/3 and Chambers St - A/C) but very close in geography--we decided to keep these values and consider them as one station. 
 
@@ -42,7 +42,7 @@ To determine the likelihood of philanthropic contributions by area, we cross-wal
 
 As you can see below, Wall St comes out as a clear front runner with nearly $500 billion in total potential contributions (the median per person contribution to charity in 2012 was almost $95,000!), followed, by Grand Central, Port Authority, Times Square, Chambers St, and Columbus Circle. 
 
-![top contributions chart]({{ site.url }}/assets/top-contr.png)
+![top contributions chart]({{ site.url }}/assets/top10.png)
 
 We also took a look at some gender ratio by zip code data, but it wasn't very robust or well-documented (a common problem with NYC Open Data...). As a high-level consideration, gender is interesting since the organization is women-focused, but likely has less practical impact when you're on the ground (i.e. if traffic is high enough, the street team could just choose to target women and the actual pre-existing women/men ratio would not matter).
 
@@ -80,9 +80,9 @@ Of course, these recommendations should be taken with a grain of salt--given the
 
 One of the reasons I decided to leave economic development/policy consulting and transition into tech was the desire to do something more with data than just produce charts and powerpoints. I'd love to build a tool here that empowers the client to use the data for their needs in the future, since the availability of their street team resources will likely fluctate. Perhaps a dashboard where the input would be street team capacity and the time/day availability, and the output would be a recommendation of the top three areas to deploy and/or a route for the time frame? 
 
-## Presentation
+## Code and presentation
 
-<iframe src="https://drive.google.com/file/d/0B4gJbxu8oVBVeWRRYURJNFI3YTA/preview" width="640" height="480"></iframe>
+The top stations analysis scripts are available at [my GitHub repo](https://github.com/dianalam/streetteam-mta-analysis) and our findings presentation can be viewed [here](https://github.com/dianalam/streetteam-mta-analysis/blob/master/presentation/mta-turnstile-pres.pdf).
 
 
 
