@@ -11,7 +11,8 @@ baseurl:            ""
 permalink:          /:year/:month/:day/:title.html
 
 # Markdown
-markdown:           rdiscount
+markdown:           redcarpet
+highlighter:        rouge
 
 # Analytics
 google_analytics:   UA-72320233-1
