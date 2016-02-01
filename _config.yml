@@ -11,7 +11,7 @@ baseurl:            ""
 permalink:          /:year/:month/:day/:title.html
 
 # Markdown
-markdown:           redcarpet
+markdown:           kramdown
 highlighter:        pygments
 
 # Analytics
