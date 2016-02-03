@@ -41,7 +41,7 @@ A few notes/interesting tidbits that stood out to me:
 
   * Holiday release was significantly correlated with success in both models, but release season is not really a defining feature of a movie. As we all know, the good movies are released during Oscar season (November - December) and bad movies are "dumped" in the January - February months. Just releasing a movie during the season that other good movies are released doesn't make your movie good, so this correlation should be taken with a grain of salt.
 
-  * Revenues tended to increases as movies became more "adult" -- PG movies made more than G, PG-13 more than PG, and R more than PG-13. NC-17 movies did the worst out of all the ratings.
+  * Revenues tended to increase as movies became more "adult" -- PG movies made more than G, PG-13 more than PG, and R more than PG-13. NC-17 movies did the worst out of all the ratings.
 
   * My hunch that budget had little impact on Oscar nominations was proved to be true. When you think of the big action movies that cost $200 - $300 million to make but are all for show, this makes sense.
 
@@ -53,7 +53,7 @@ While all of the above features had significant p values, some features were def
 
 ![revenues rsq]({{ site.url }}/assets/revs-rsq.png)
 
-In the Oscars model, predictive power was evenly distributed among all features, where as in revenues model, theaters accounted for the majority of the predictive power. We can see how highly correlated theaters are with budget in the plot below.
+In the Oscars model, predictive power was evenly distributed among all features, where as in the revenues model, theaters accounted for the majority of the predictive power. We can see how highly correlated theaters are with gross revenues in the plot below.
 
 ![theaters scatter]({{ site.url }}/assets/lmplot-theaters.png)
 
@@ -93,6 +93,6 @@ Finally--I found the comparative nature of the study to be quite revealing. I'd 
 
 ## Code and presentation
 
-My scraping scripts and an iPython notebook with my analysis is available on [my GitHub repo](https://github.com/dianalam/movie-predictor). My findings presentation can be viewed here.
+My scraping scripts and an iPython notebook with my analysis is available on [my GitHub repo](https://github.com/dianalam/movie-predictor). My findings presentation can be viewed [here](https://github.com/dianalam/movie-predictor/blob/master/presentation/movie-predictor.pdf).
 
 Questions or comments? Feel free to shoot me an email at [lam.diana.hc@gmail.com](mailto:lam.diana.hc@gmail.com)!
