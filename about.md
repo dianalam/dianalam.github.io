@@ -9,7 +9,7 @@ I'm currently a data science fellow at [Metis](http://thisismetis.com), where I'
 
 Prior to Metis, I was a Senior Analyst at [HR&A Advisors](http://hraadvisors.com), an industry leading economic development and public policy consulting firm. My practice focused on developing innovative economic and policy solutions to spur the growth of tech and innovation in cities. I managed projects and led analysis and strategy development for a range of public and private sector clients, including Airbnb, Industry City, The Related Companies, Knight Foundation, The Trust for Public Land, NYC Office of the Mayor, and NYC Economic Development Corporation.
 
-I have a B.A. in Architecture, magna cum laude, Princeton University.
+I have a B.A. in Architecture, magna cum laude, from Princeton University.
 
 ### Contact me
 
