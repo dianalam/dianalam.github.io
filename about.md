@@ -3,7 +3,7 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm Diana. I'm an urban strategist working at the intersection of design, economics, and public policy. I'm passionate about leveraging data and technology to strengthen innovation in cities.
+Hi, I'm Diana. I'm an architect and urban strategist turned data scientist. I work at the intersection of design, economics, and public policy and am passionate about leveraging data and technology to strengthen innovation in cities.
 
 I'm currently a data science fellow at [Metis](http://thisismetis.com), where I'm using machine learning and data visualization to uncover new trends and strategies in the realm of civic technology. This website documents the portfolio of data-driven projects I'm currently working on.
 
