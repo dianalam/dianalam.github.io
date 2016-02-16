@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Big Data, Machine Learning, and Smart Cities
+title: Big Data and Smart Cities
 excerpt: By 2050, 75 percent of the world's population will live in cities. How can data and technology optimize city services and improve quality of life?
 ---
 
