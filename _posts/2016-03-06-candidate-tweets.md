@@ -54,9 +54,19 @@ As I mentioned above, I found the comparison between candidates to be most fasci
 
 All candidates, with the exception of Trump, have been ramping up their Twitter usage leading up to Super Tuesday. In keeping with the general surprise that Trump's campaign has incited, his Twitter presence actually peaked in October 2015, but has steadily decreased since then.
 
+![retweets comparison]({{ site.url }}/assets/retweets-chart.png)
+
+**Retweets/favorites:** At the same time, we can gain insight into who is more popular and driving a more successful Twitter campaign. Trump leads in this metric, with an average of over 4,400 favorites and 1,800 retweets per tweet. Sanders comes in second with almost 2,000 favorites and 1,250 retweets and Clinton third with about 1,200 favorites and 785 retweets. Cruz and Rubio lag behind, with about 200 - 300 retweets and favorites per tweet.
+
+![topic breakdown feb 2016]({{ site.url }}/assets/tweets-summary.png)
+
 **Topic breakdown:** Across party lines--the Democratic candidates have a greater variety of tweets, notably with more tweets about econ/foreign policy and health/edu/women's rights than the GOP. For Cruz and Rubio, the majority of their tweets are focused on the primaries, which echoes their respective positions of trying to play catch up to Trump in the race for the GOP nomination. Trump's tweets, unsurprisingly, are primarily focused on media and self-promotion. Here we can see what's playing out in each party--the GOP is engaged in an internal battle, with Trump riding his lead and Cruz and Rubio focusing their energies on the primaries. None of the GOP candidates seem to be campaigning based on their policy positions, whereas Clinton and Sanders are running completely different campaigns, focusing on the differences in their policy platforms to gain voters.
 
+![sentiment comparison feb 2016]({{ site.url }}/assets/tweets-sentiment.png)
+
 **Sentiment:** Overall, candidate tweets had fairly neutral sentiment scores, which makes sense given the highly curated nature of their Twitter profiles. The retweets/other and primaries topics had the most positive sentiment ratings, which makes sense given the content. Another trend that stood out was sentiment around economic and foreign policy--on average over time, Clinton and Sanders had more positive sentiments when discussing this topic, while the GOP had more negative sentiment. This again, makes a lot of sense given the respective parties' stances on immigration (closing the borders vs. inclusivity) and the GOP backlash against the economic policies of the current administration. Finally, we can see that in February 2016, Trump's media/self-promotion tweets have a far lower sentiment than the other candidates, reflecting his strategy of tweeting negative statements about other candidates and politicians.
+
+![call to action comparison feb 2016]({{ site.url }}/assets/tweets-imperative.png)
 
 **Imperativeness/call to action:** Trump really stood out in this category, with over 50 percent of his tweets containing some sort of call to action or command to his followers. Not a surprise given what we've seen of his campaign strategy. I was surprised, however, that Cruz and Rubio aren't stepping this up, particularly in the primaries category.
 
