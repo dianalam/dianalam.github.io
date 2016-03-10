@@ -8,7 +8,7 @@ excerpt: It's election year and social media is playing a larger role than ever 
 
 A presidential election year is here again and with Super Tuesday come and gone, the primaries are in full swing. It's hard not to pull up the news without reading a story about how this year's candidates--on both parties--are changing the way they engage with each other and the general American public. Social media, and Twitter in particular, is one of the main venues through which the Republicans and Democrats are reaching out to potential voters, trying to reinforce or supplement the likability of their candidates through a more fluid communication tool.
 
-We all know that a big part of Obama's win in 2008 was through pinpointing undecided voters through machine learning models and campaigning for their votes. This strategy will likely again play a significant role in 2016 and Twitter is one of the easiest and most accessible ways to engage directly with specific populations.
+We all know that a big part of Obama's win in 2012 was through pinpointing undecided voters through machine learning models and campaigning for their votes. This strategy will likely again play a significant role in 2016 and Twitter is one of the easiest and most accessible ways to engage directly with specific populations.
 
 # The goal
 
