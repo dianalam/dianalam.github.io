@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>perceptions of urban perception: nyc explorer map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <!-- <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" /> -->
+    <style>
+      body {
+        display: flex;
+      }
+      html, body, #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      #map {
+        flex-grow: 1;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      #sidebar {
+        position: relative;
+        width: 0;
+        transition: width 0.5s ease-in-out;
+        overflow-y: auto;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", helvetica, arial, sans-serif;
+      }
+
+      .sidebar-header {
+        /*font-family: helvetica, arial, sans-serif;*/
+        margin: 20px;
+      }
+
+      .neighborhood-name {
+        margin: 0 10px 10px 0;
+      }
+
+      .neighborhood-desc,
+      .neighborhood-diffscore {
+        margin: 0 0 5px 0;
+      }
+
+      .info-header {
+        display: inline-block;
+        width: 140px;
+      }
+
+      .images {
+        /*styles here*/
+      }
+
+      .sidebar-chart {
+        margin-top: 20px;
+      }
+
+      #sidebar.open {
+        width: 500px;
+      }
+
+      #sidebar.open #sidebar-close {
+        display: block;
+      }
+      #sidebar-close {
+        display: none;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        right: 10px;
+        border-radius: 3px;
+      }
+      #sidebar-close::before,
+      #sidebar-close::after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: 1px;
+        height: 20px;
+        background-color: #bbb;
+      }
+      #sidebar-close:hover {
+        background-color: #eee;
+      }
+      #sidebar-close:hover::before,
+      #sidebar-close:hover::after {
+        background-color: #999;
+      }
+      #sidebar-close::before {
+        transform: translateX(10px) rotate(45deg);
+      }
+      #sidebar-close::after {
+        transform: translateX(10px) rotate(-45deg);
+      }
+      .sidebar-options {
+        margin-top: 15px;
+        display: flex;
+      }
+      .sidebar-option {
+        flex-grow: 1;
+        background: none;
+        border: 1px solid lightgrey;
+        font-size: 1em;
+        cursor: pointer;
+        color: grey;
+      }
+      .sidebar-option:disabled {
+        background-color: lightgrey;
+        color: black;
+        cursor: default;
+      }
+      .sidebar-option:first-child {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+      .sidebar-option:last-child {
+        margin-left: -1px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+      .ds_similar_tp {
+        background-color: rgb(246, 210, 72);
+      }
+      .ds_more_danger_tp {
+        background-color: rgb(239, 88, 83);
+        color: white;
+      }
+      .ds_safer_tp {
+        background-color: rgb(96, 180, 74);
+        color: white;
+      }
+      .diffscore {
+        display: inline-block;
+        padding: 5px;
+        border-radius: 3px;
+      }
+      .neighborhood-image {
+        display: block;
+        margin: 15px auto;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+    <aside id="sidebar">
+      <a href="#" id="sidebar-close" role="button"></a>
+      <header class="sidebar-header">
+        <h2 class="neighborhood-name"></h2>
+        <p class="neighborhood-desc"><strong class="info-header">Tract Number:</strong> <span class="fips"></span></p>
+        <p class="neighborhood-diffscore"><strong class="info-header">Difference Score:</strong> <span class="diffscore"></span></p>
+        <nav class="sidebar-options">
+          <button class="sidebar-option" data-toggle="false" disabled>Data</button>
+          <button class="sidebar-option" data-toggle="true">Images</button>
+        </nav>
+      </header>
+      <section class="images hide"></section>
+      <section class="charts">
+        <figure class="sidebar-chart"></figure>
+        <figure class="sidebar-chart"></figure>
+        <figure class="sidebar-chart"></figure>
+      </section>
+    </aside>
+
+    <!-- include cartodb.js library -->
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script>
+      // load google vis library
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      function main() {
+        cartodb.createVis('map', 'https://dianalam.cartodb.com/api/v2/viz/82d461f0-f484-11e5-8781-0e31c9be1b51/viz.json', {
+            shareable: true,
+            title: true,
+            description: true,
+            search: true,
+            tiles_loader: true,
+            center_lat: 40.730610,
+            center_lon: -73.875,
+            zoom: 12
+        })
+        .done(function(vis, layers) {
+          // layer 0 is the base layer, layer 1 is cartodb layer
+          // setInteraction is disabled by default
+          layers[1].setInteraction(true);
+          layers[1].on('featureClick', function(e, latlng, pos, data) {
+            fillHeader(data);
+            prepareImages(data);
+            drawLandUsePieChart(data);
+            drawPhysicalFeatureBarChart(data);
+            drawEconomicFeatureBarChart(data);
+            toggleSidebarContent(false);
+            console.log(data);
+          });
+          // you can get the native map to work with it
+          var map = vis.getNativeMap();
+          // now, perform any operations you need
+          // map.setZoom(3);
+          // map.panTo([50.5, 30.5]);
+        })
+        .error(function(err) {
+          console.log(err);
+        });
+      }
+
+      window.onload = main;
+
+      document.getElementById('sidebar-close').addEventListener('click', function (event) {
+        event.preventDefault();
+        document.getElementById('sidebar').classList.remove('open');
+      });
+
+      [].forEach.call(document.querySelectorAll('.sidebar-option'), function (el) {
+        el.addEventListener('click', function (event) {
+          toggleSidebarContent(event.target.dataset.toggle === 'true'); // dataset.toggle is a string
+        });
+      });
+
+      // sidebar functions below
+      var tractJSON = null;
+
+      function prepareImages (data) {
+        // we don't have the json yet, grab it
+        if (!tractJSON) {
+          var req = new XMLHttpRequest();
+          req.addEventListener('load', function () {
+            tractJSON = JSON.parse(this.responseText);
+            renderImages(data.fips_tract);
+          });
+          req.open('GET', '/tract_json_picked.json');
+          req.send();
+        } else {
+          // we already have the json, go ahead and render immediately
+          renderImages(data.fips_tract);
+        }
+      }
+
+      function renderImages (fipsTract) {
+        var urls = tractJSON[fipsTract].map(function (coords) {
+          return 'http://maps.googleapis.com/maps/api/streetview?size=470x306&location=' + coords.join(',');
+        });
+        var images = urls.map(function (url) {
+          return '<img class="neighborhood-image" src="' + url + '"/>';
+        });
+        var imageContainer = document.querySelector('#sidebar .images');
+        imageContainer.innerHTML = images.join('');
+      }
+
+      function toggleSidebarContent (isImages) {
+        var els = [document.querySelector('#sidebar .images'),
+          document.querySelector('#sidebar .charts')];
+        if (!isImages) {
+          els.reverse();
+        }
+        els[0].classList.remove('hide');
+        els[1].classList.add('hide');
+
+        document.querySelector('.sidebar-option[data-toggle="' + isImages + '"]').setAttribute('disabled', true);
+        document.querySelector('.sidebar-option[data-toggle="' + !isImages + '"]').removeAttribute('disabled');
+      }
+
+
+      var ntypeDict = {
+        'similar_tp': 'similar to perceived',
+        'more_danger_tp': 'more dangerous than perceived',
+        'safer_tp': 'safer than perceived'
+      }
+
+      function fillHeader (data) {
+        document.querySelector('.neighborhood-name').textContent = data.ntaname + ', ' + data.boroname;
+        document.querySelector('.fips').textContent = data.fips_tract;
+        var diffscore = document.querySelector('.diffscore');
+        diffscore.innerHTML = '<strong>' + data.diff_zscore_r + '</strong>' +
+          ' (<em>' + ntypeDict[data.n_type] + '</em>)';
+        Object.keys(ntypeDict).forEach(function (key) {
+          diffscore.classList.remove('ds_' + key);
+        });
+        diffscore.classList.add('ds_' + data.n_type);
+      }
+
+      function drawLandUsePieChart (data) {
+        document.getElementById('sidebar').classList.add('open');
+        var chartData = google.visualization.arrayToDataTable([
+           ['land use type', '% of total sf'],
+           ['retail',  data.retailarea],
+           ['residential', data.resarea],
+           ['industrial', data.ind_area],
+           ['office', data.officearea],
+           ['other', data.otherarea]
+        ]);
+         var options = {
+           title: 'Land Use Breakdown',
+          //  legend: { position: "none" },
+           width: 450,
+           height: 300,
+           chartArea: {width: '80%', height: '75%'},
+           pieHole: 0.4,
+           colors: ['#EE6E70', '#FED84A', '#C182D9', '#6E90FF', '#C2C8CA']
+         };
+
+         var sfFormatter = new google.visualization.NumberFormat({pattern: '###,###,###,###', suffix: ' sf'});
+         sfFormatter.format(chartData, 1);
+
+         var chart = new google.visualization.PieChart(document.querySelectorAll('.sidebar-chart')[0]);
+         chart.draw(chartData, options);
+      }
+
+      function drawPhysicalFeatureBarChart (data) {
+        document.getElementById('sidebar').classList.add('open');
+        var chartData = google.visualization.arrayToDataTable([
+           ['physical feature', '% of median', 'citywide median'],
+           ['assessed value',  data.mp_median_assesstot * 100, 100],
+           ['year built', data.mp_yearbuilt * 100, 100],
+           ['building heights', data.mp_median_numfloors * 100, 100],
+           ['311 complaints', data.mp_num_311_complaints * 100, 100]
+        ]);
+         var options = {
+           title: 'Physical Features',
+           legend: { position: "top" },
+           width: 450,
+           height: 300,
+           chartArea: {width: '80%', height: '75%'},
+           seriesType: 'bars',
+           visibleInLegend: false,
+           colors: ['#00AEF3'],
+           series: {1: {
+             type: 'line',
+             lineDashStyle: [10, 5],
+             color: 'grey',
+             lineWidth: 1,
+             enableInteractivity: false}},
+           vAxis: {textPosition: 'none', gridlines: {color:'none'}},
+         };
+
+         var roundingFormatter = new google.visualization.NumberFormat({pattern: '0.0', suffix: '%'});
+         roundingFormatter.format(chartData, 1);
+
+         var chart = new google.visualization.ComboChart(document.querySelectorAll('.sidebar-chart')[1]);
+         chart.draw(chartData, options);
+      }
+
+      function drawEconomicFeatureBarChart (data) {
+        document.getElementById('sidebar').classList.add('open');
+        var chartData = google.visualization.arrayToDataTable([
+           ['socioeconomic feature', '% of median', 'citywide median'],
+           ['% non-family households',  data.mp_hh_type_pct_nonfamily * 100, 100],
+           ['% persons of color', data.mp_race_pct_nonwhite * 100, 100],
+           ['household income', data.mp_median_hh_income * 100, 100],
+           ['housing costs as % of income', data.mp_hh_type1_ht * 100, 100]
+        ]);
+         var options = {
+           title: 'Socioeconomic Features',
+           legend: { position: "top" },
+           width: 450,
+           height: 300,
+           backgroundColor: 'transparent',
+           chartArea: {width: '80%', height: '75%'},
+           seriesType: 'bars',
+           visibleInLegend: false,
+           colors: ['#FF8101'],
+           series: {1: {
+             type: 'line',
+             lineDashStyle: [10, 5],
+             color: 'grey',
+             lineWidth: 1,
+             enableInteractivity: false}},
+           vAxis: {textPosition: 'none', gridlines: {color:'none'}},
+         };
+
+         var roundingFormatter = new google.visualization.NumberFormat({pattern: '0.0', suffix: '%'});
+         roundingFormatter.format(chartData, 1);
+
+         var chart = new google.visualization.ColumnChart(document.querySelectorAll('.sidebar-chart')[2]);
+         chart.draw(chartData, options);
+      }
+
+    </script>
+  </body>
+</html>
