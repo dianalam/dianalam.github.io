@@ -182,7 +182,7 @@
             tiles_loader: true,
             center_lat: 40.730610,
             center_lon: -73.875,
-            zoom: 12
+            zoom: 11
         })
         .done(function(vis, layers) {
           // layer 0 is the base layer, layer 1 is cartodb layer
@@ -316,7 +316,7 @@
            ['physical feature', '% of median', 'citywide median'],
            ['assessed value',  data.mp_median_assesstot * 100, 100],
            ['year built', data.mp_yearbuilt * 100, 100],
-           ['building heights', data.mp_median_numfloors * 100, 100],
+           ['bldg height variance', data.mp_median_numfloors * 100, 100],
            ['311 complaints', data.mp_num_311_complaints * 100, 100]
         ]);
          var options = {
