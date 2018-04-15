@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MTALead - Identifying Travel Patterns Post-L Train Shutdown
+title: MTALead - Modeling Pedestrian Patterns During the L Train Shutdown
 excerpt: The April 2019 L train shutdown in New York City will impact 225,000 people per day. How can we collect data on pedestrian movement patterns and estimate how they will change with the shutdown? In this post I describe MTALead, a proposal to collect data on and model real-time pedestrian flows to mitigate the impacts of the shutdown on riders and neighborhood business owners.
 ---
 
